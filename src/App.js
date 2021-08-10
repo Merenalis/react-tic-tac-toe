@@ -4,8 +4,8 @@ import ModalStart from './components/ModalStart';
 function App() {
   return (
     <div>
-   <ModalStart/>
-  <MainClass/> 
+    <ModalStart/>
+    <MainClass/> 
     </div>
     
   );

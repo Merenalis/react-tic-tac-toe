@@ -22,3 +22,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+src/test/components/ishodniki/index.html
+src/test/components/ishodniki/index.js
+src/test/components/ishodniki/main.css
