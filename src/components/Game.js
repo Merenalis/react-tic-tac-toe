@@ -64,7 +64,7 @@ class Game extends Component {
             status = winner === 1 ? 'Nobody win' : 'Winner is ' + winner;
         }
         return (
-            <div className={'hui'}>
+            <div>
                 <h1>Tic-tac-toe</h1>
                 <div className="game">
                     <div className="game-result">
