@@ -71,7 +71,7 @@ class Game extends Component {
                         <div>Result: {status}</div>
                         <button onClick={(e) => this.restart()}>Play again</button>
                     </div>
-                    <div className="game-board">
+                    <div className="game--board">
                         <Board onClick={(i) => this.handleClick(i)} squares={current.squares}/>
                     </div>
 
