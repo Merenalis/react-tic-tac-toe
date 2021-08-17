@@ -24,11 +24,11 @@ export default class ModalStart extends Component {
     <div id="overlay-start">
         <div id="modal-window-start">
             <div id="content-start">
-                Чтобы начать новую игру, нажмите Старт.<br/>
-                <p> Пусть победит сильнейший!</p>
+                Press Start to start a new game. <br/>
+                <p> May the strongest win!</p>
             </div>
             <div id="btn-start_game" onClick={e=>this.hideWindow()}>
-                Старт
+               Start
             </div>
         </div>
     </div>
