@@ -1,12 +1,16 @@
 import './styles/index.css';
-import MainClass from './components/MainClass';
-import ModalStart from './components/ModalStart';
+import Square from "./components/Square";
+import Game from "./components/Game";
+import ModalStart from "./components/ModalStart";
+
 function App() {
-  return (
-    <div>
-    <ModalStart/>
-    <MainClass/> 
-    </div>
+  return (<div>
+<ModalStart/>
+          <div className={'wrapper'}>
+              <Game/>
+          </div>
+  </div>
+
     
   );
 
