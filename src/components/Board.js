@@ -4,11 +4,10 @@ import '../styles/index.css';
 
 class Board extends Component {
     renderSquare(i) {
-        return <Square value={this.props.squares[i]}
-                       onClick={() => this.props.onClick(i)}
-        />
+        return(
+            <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)}/>
+            );
     }
-
     render() {
         return (
             <div className={'wrapper'}>
@@ -27,10 +26,8 @@ class Board extends Component {
                     {this.renderSquare(7)}
                     {this.renderSquare(8)}
                 </div>
-
             </div>
         );
     }
 }
-
 export default Board;

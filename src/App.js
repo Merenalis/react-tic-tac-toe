@@ -1,19 +1,16 @@
-import './styles/index.css';
-import Game from "./components/Game";
-import ModalStart from "./components/ModalStart";
+import React from 'react'
+import './styles/index.css'
+import Game from './components/Game'
+import ModalStart from './components/ModalStart'
 
-function App() {
-  return (<div>
-<ModalStart/>
-          <div className={'wrapper'}>
-              <Game/>
-          </div>
-  </div>
-
-    
-  );
-
-
+function App () {
+  return (
+        <div>
+            <ModalStart/>
+            <div className={'wrapper'}>
+                <Game/>
+            </div>
+        </div>
+  )
 }
-
-export default App;
+export default App
