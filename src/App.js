@@ -5,6 +5,7 @@ import {Provider} from "react-redux";
 import GameFunc from "./components/GameFunc";
 import {HANDLECLICK, RESTART, PREVIOUS, NEXT} from "./actions/actions";
 import {connect} from "react-redux";
+import ModalStart from "./components/ModalStart";
 
 const initialState = {
     xIsNext: true,
@@ -66,11 +67,15 @@ const WrappedGameComp = connect(mapStateToProps)(GameFunc)
 
 function App() {
     return (
-        <Provider store={store}>
-            <div className={'wrapper'}>
-                <WrappedGameComp/>
-            </div>
-        </Provider>
+        <div>
+            <ModalStart/>
+            <Provider store={store}>
+                <div className={'wrapper'}>
+                    <WrappedGameComp/>
+                </div>
+            </Provider>
+        </div>
+
     )
 }
 
