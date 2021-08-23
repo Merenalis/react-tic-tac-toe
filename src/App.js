@@ -21,10 +21,10 @@ const initialState = {
 function reducer(state = initialState, action) {
     switch (action.type) {
         case HANDLECLICK:
-            return {...state, xIsNext: action.xIsNext, stepNumber: action.stepNumber, history: action.history}
+            return {...state, xIsNext: action.xIsNext, stepNumber: action.stepNumber, history: action.history,history2: action.history2}
 
         case RESTART: {
-            return {...state, xIsNext: action.xIsNext, stepNumber: action.stepNumber, history: action.history}
+            return {...state, xIsNext: action.xIsNext, stepNumber: action.stepNumber, history: action.history,history2: action.history2}
 
         }
 

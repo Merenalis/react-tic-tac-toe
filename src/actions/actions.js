@@ -10,7 +10,8 @@ export function action_handleClick(xIsNext, history__handleClick, squares) {
         history: history__handleClick.concat({
             squares: squares
         }),
-        stepNumber: history__handleClick.length
+        stepNumber: history__handleClick.length,
+        history2:[],
     }
 }
 
@@ -24,7 +25,7 @@ export function action_restart() {
                 squares: Array(9).fill(null)
             }
         ],
-        history2: [null],
+        history2: [],
     }
 }
 
