@@ -18,7 +18,7 @@ function GameFunc(props) {
         const history__handleClick = historyFromProp.slice(0, ++stepNumberFromProp)
         const current = history__handleClick[history__handleClick.length - 1]
         const squares = current.squares.slice()
-        const winner = calculateWinner(squares, stepNumberFromProp)
+        const winner = calculateWinner(squares)
         if (winner || squares[i]) {
             return
         }
@@ -26,7 +26,6 @@ function GameFunc(props) {
 
         dispatch(action_handleClick(xIsNextFromProp, history__handleClick, squares))
     }
-
 
     function restart() {
         dispatch(action_restart())
@@ -48,10 +47,11 @@ function GameFunc(props) {
 
     let status;
     const current = historyFromProp[stepNumberFromProp]
-    const winner = calculateWinner(current.squares, stepNumberFromProp)
-
+    const winner = calculateWinner(current.squares)
     if (winner) {
-        status = winner === 1 ? 'Nobody win' : 'Winner is ' + winner
+        status =  'Winner is ' + winner
+    }else if (stepNumberFromProp===9){
+        status = 'Nobody win'
     }
 
     return (
