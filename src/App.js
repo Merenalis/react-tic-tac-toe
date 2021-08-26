@@ -4,7 +4,7 @@ import {createStore} from "redux";
 import {Provider} from "react-redux";
 import ModalStart from "./components/ModalStart";
 import reducer from './functions/Reducer'
-import WrappedGameComp from "./components/WrappedGameComp";
+import GameFunc from "./components/GameFunc";
 
 const store = createStore(reducer)
 function App() {
@@ -13,7 +13,7 @@ function App() {
             <ModalStart/>
             <Provider store={store}>
                 <div className={'wrapper'}>
-                    <WrappedGameComp/>
+                    <GameFunc/>
                 </div>
             </Provider>
         </div>
