@@ -15,10 +15,7 @@ const WrappedGame = connect(mapStateToProps)(GameFunc)
 
 function WrappedGameComp() {
     return (
-        <div>
-            <WrappedGame/>
-        </div>
-
+        <WrappedGame/>
     )
 }
 
