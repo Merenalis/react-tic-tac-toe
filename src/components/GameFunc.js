@@ -4,14 +4,12 @@ import '../styles/index.css'
 import calculateWinner from '../functions/CalculateWinner'
 import {useDispatch} from "react-redux";
 import {actionHandleClick, actionNext, actionPrevious, actionRestart} from "../actions/actions";
-
 function GameFunc(props) {
     const dispatch = useDispatch();
     let xIsNextFromProp = props.xIsNext;
     let historyFromProp = props.history;
     let stepNumberFromProp = props.stepNumber;
     let historyFromProp2 = props.history2;
-
 
     function handleClick(i) {
         const historyHandleClick = historyFromProp.slice(0, ++stepNumberFromProp)

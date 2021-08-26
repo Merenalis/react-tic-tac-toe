@@ -1,7 +1,6 @@
 export const HANDLECLICK = 'HANDLECLICK'
 export const RESTART = 'RESTART'
 export const PREVIOUS = 'PREVIOUS'
-export const NEXT = 'NEXT'
 
 export function actionHandleClick(xIsNext, historyHandleClick, squares) {
     return {
@@ -17,7 +16,7 @@ export function actionHandleClick(xIsNext, historyHandleClick, squares) {
 
 export function actionRestart() {
     return {
-        type: RESTART,
+        type: HANDLECLICK,
         xIsNext: true,
         stepNumber: 0,
         history: [
@@ -41,7 +40,7 @@ export function actionPrevious(xIsNext, historyLength, history, history2) {
 
 export function actionNext(xIsNext, history, historyLength, newHistory) {
     return {
-        type: NEXT,
+        type: HANDLECLICK,
         xIsNext: !xIsNext,
         stepNumber: historyLength - 1,
         history: history,
