@@ -1,13 +1,12 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Board from './Board'
 import '../styles/index.css'
 import calculateWinner from '../functions/CalculateWinner'
 import {useDispatch} from "react-redux";
-import {action_handleClick, action_next, action_previous, action_restart} from "../actions/actions";
+import {actionHandleClick, actionNext, actionPrevious, actionRestart} from "../actions/actions";
 
 function GameFunc(props) {
     const dispatch = useDispatch();
-
     let xIsNextFromProp = props.xIsNext;
     let historyFromProp = props.history;
     let stepNumberFromProp = props.stepNumber;
@@ -15,8 +14,8 @@ function GameFunc(props) {
 
 
     function handleClick(i) {
-        const history__handleClick = historyFromProp.slice(0, ++stepNumberFromProp)
-        const current = history__handleClick[history__handleClick.length - 1]
+        const historyHandleClick = historyFromProp.slice(0, ++stepNumberFromProp)
+        const current = historyHandleClick[historyHandleClick.length - 1]
         const squares = current.squares.slice()
         const winner = calculateWinner(squares)
         if (winner || squares[i]) {
@@ -24,33 +23,33 @@ function GameFunc(props) {
         }
         squares[i] = xIsNextFromProp ? 'X' : '0';
 
-        dispatch(action_handleClick(xIsNextFromProp, history__handleClick, squares))
+        dispatch(actionHandleClick(xIsNextFromProp, historyHandleClick, squares))
     }
 
     function restart() {
-        dispatch(action_restart())
+        dispatch(actionRestart())
     }
 
     function previousStep() {
         const history = historyFromProp.slice(0, stepNumberFromProp)
         const history2 = historyFromProp.slice(stepNumberFromProp, ++stepNumberFromProp)
         let historyLength = history.length;
-        dispatch(action_previous(xIsNextFromProp, historyLength, history, history2))
+        dispatch(actionPrevious(xIsNextFromProp, historyLength, history, history2))
     }
 
     function nextStep() {
-        const history__next = historyFromProp.slice(0, ++stepNumberFromProp)
-        const history_next_elem = historyFromProp2.pop()
-        const new_history = history__next.concat(history_next_elem)
-        dispatch(action_next(xIsNextFromProp, new_history, new_history.length, historyFromProp2))
+        const historyNext = historyFromProp.slice(0, ++stepNumberFromProp)
+        const historyNextElem = historyFromProp2.pop()
+        const newHistory = historyNext.concat(historyNextElem)
+        dispatch(actionNext(xIsNextFromProp, newHistory, newHistory.length, historyFromProp2))
     }
 
     let status;
     const current = historyFromProp[stepNumberFromProp]
     const winner = calculateWinner(current.squares)
     if (winner) {
-        status =  'Winner is ' + winner
-    }else if (stepNumberFromProp===9){
+        status = 'Winner is ' + winner
+    } else if (stepNumberFromProp === 9) {
         status = 'Nobody win'
     }
 
@@ -65,19 +64,15 @@ function GameFunc(props) {
                     <button disabled={stepNumberFromProp === 0} className={'btn-previous'}
                             onClick={() => previousStep()}>Previous
                     </button>
-                    <button disabled={JSON.stringify(historyFromProp2) === "[]"} className={'btn-next'}
+                    <button disabled={historyFromProp2.length === 0} className={'btn-next'}
                             onClick={() => nextStep()}>Next
                     </button>
                 </div>
                 <div className="game-board">
                     <Board onClick={(i) => handleClick(i)} squares={current.squares}/>
                 </div>
-
             </div>
         </div>
-
     )
-
 }
-
 export default GameFunc

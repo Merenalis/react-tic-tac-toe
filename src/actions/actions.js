@@ -3,19 +3,19 @@ export const RESTART = 'RESTART'
 export const PREVIOUS = 'PREVIOUS'
 export const NEXT = 'NEXT'
 
-export function action_handleClick(xIsNext, history__handleClick, squares) {
+export function actionHandleClick(xIsNext, historyHandleClick, squares) {
     return {
         type: HANDLECLICK,
         xIsNext: !xIsNext,
-        history: history__handleClick.concat({
+        history: historyHandleClick.concat({
             squares: squares
         }),
-        stepNumber: history__handleClick.length,
-        history2:[],
+        stepNumber: historyHandleClick.length,
+        history2: [],
     }
 }
 
-export function action_restart() {
+export function actionRestart() {
     return {
         type: RESTART,
         xIsNext: true,
@@ -29,7 +29,7 @@ export function action_restart() {
     }
 }
 
-export function action_previous(xIsNext, historyLength, history, history2) {
+export function actionPrevious(xIsNext, historyLength, history, history2) {
     return {
         type: PREVIOUS,
         xIsNext: !xIsNext,
@@ -39,12 +39,12 @@ export function action_previous(xIsNext, historyLength, history, history2) {
     }
 }
 
-export function action_next(xIsNext, history, historyLength, new_history) {
+export function actionNext(xIsNext, history, historyLength, newHistory) {
     return {
         type: NEXT,
         xIsNext: !xIsNext,
         stepNumber: historyLength - 1,
         history: history,
-        history2: new_history,
+        history2: newHistory,
     }
 }
