@@ -48,6 +48,8 @@ function GameFunc() {
         status = 'Nobody win'
     }
 
+    const stylePrev = {cursor: data.stepNumber === 0 ? 'default' : 'pointer' }
+    const styleNext = {cursor: data.history2.length === 0 ? 'default' : 'pointer'}
     return (
         <div>
             <h1>Tic-tac-toe</h1>
@@ -56,10 +58,10 @@ function GameFunc() {
                     <div>Result: {status}</div>
                     <button onClick={() => restart()}>Play again</button>
                     <br/>
-                    <button disabled={data.stepNumber === 0} className={'btn-previous'}
+                    <button disabled={data.stepNumber === 0} style={stylePrev} className={'btn-previous'}
                             onClick={() => previousStep()}>Previous
                     </button>
-                    <button disabled={data.history2.length === 0} className={'btn-next'}
+                    <button disabled={data.history2.length === 0} style={styleNext} className={'btn-next'}
                             onClick={() => nextStep()}>Next
                     </button>
                 </div>
