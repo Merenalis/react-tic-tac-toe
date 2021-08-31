@@ -17,7 +17,6 @@ function App() {
                 </div>
             </Provider>
         </div>
-
     )
 }
 export default App
