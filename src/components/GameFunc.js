@@ -3,7 +3,7 @@ import Board from './Board'
 import '../styles/index.css'
 import calculateWinner from '../functions/CalculateWinner'
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
-import {actionHandleClick, actionNext, actionPrevious, actionRestart} from "../actions/actions";
+import {actionHandleClick, actionNext, actionPrevious, actionRestart,actionTest} from "../actions/actions";
 function GameFunc() {
     const dispatch = useDispatch();
     const data = useSelector(state => state, shallowEqual);
@@ -30,6 +30,7 @@ function GameFunc() {
         const history2 = data.history.slice(data.stepNumber, ++data.stepNumber)
         let historyLength = history.length;
         dispatch(actionPrevious(data.xIsNext, historyLength, history, history2))
+
     }
 
     function nextStep() {
@@ -48,8 +49,10 @@ function GameFunc() {
         status = 'Nobody win'
     }
 
-    const stylePrev = {cursor: data.stepNumber === 0 ? 'default' : 'pointer' }
-    const styleNext = {cursor: data.history2.length === 0 ? 'default' : 'pointer'}
+    const stylePrev = { cursor: data.stepNumber === 0 ? 'default' : 'pointer',
+        backgroundColor:data.stepNumber === 0 ? 'gray': 'white'}
+    const styleNext = {cursor: data.history2.length === 0 ? 'default' : 'pointer',
+        backgroundColor:data.history2.length === 0 ? 'gray': 'white'}
     return (
         <div>
             <h1>Tic-tac-toe</h1>

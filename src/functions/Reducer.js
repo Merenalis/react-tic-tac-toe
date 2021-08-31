@@ -1,4 +1,4 @@
-import {HANDLECLICK, PREVIOUS} from "../actions/actions";
+import {HANDLECLICK, PREVIOUS,TEST} from "../actions/actions";
 
 const initialState = {
     xIsNext: true,
@@ -28,6 +28,12 @@ export default function reducer(state = initialState, action) {
                 stepNumber: action.stepNumber,
                 history: action.history,
                 history2: state.history2.concat(action.history2)
+            }
+            case TEST:
+            return {
+                ...state,
+                stepNumber: action.stepNumber,
+
             }
 
         default:
