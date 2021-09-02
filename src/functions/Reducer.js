@@ -1,4 +1,4 @@
-import {HANDLECLICK, CHANGE} from "../actions/actions";
+import {HANDLECLICK, CHANGE,TEST} from "../actions/actions";
 
 const initialState = {
     xIsNext: true,
@@ -9,6 +9,7 @@ const initialState = {
         }
     ],
     index: 0,
+    i:null
 };
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -26,6 +27,12 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 xIsNext: action.xIsNext,
                 index: action.index,
+            }
+        case TEST:
+            return {
+                ...state,
+                i: action.i,
+
             }
 
 

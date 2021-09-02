@@ -1,6 +1,7 @@
 export const HANDLECLICK = 'HANDLECLICK'
 export const RESTART = 'RESTART'
 export const CHANGE = 'CHANGE'
+export const TEST = 'TEST'
 
 export function actionHandleClick(xIsNext, historyHandleClick, squares, index) {
     return {
@@ -28,12 +29,18 @@ export function actionRestart() {
     }
 }
 
-
 export function actionChange(xIsNext, index) {
     return {
         type: CHANGE,
         xIsNext: !xIsNext,
         index: index,
+    }
+}
+export function actionTest(i) {
+    return {
+        type: TEST,
+        i: i,
+
     }
 }
 
