@@ -1,24 +1,20 @@
 export const HANDLECLICK = 'HANDLECLICK'
 export const RESTART = 'RESTART'
 export const CHANGE = 'CHANGE'
-export const PREVIOUS = 'PREVIOUS'
 
-
-export function actionHandleClick(xIsNext, historyHandleClick, squares, index) {
+export function actionHandleClick(squares) {
     return {
         type: HANDLECLICK,
-        xIsNext: !xIsNext,
-        history: historyHandleClick.concat({
+        history: ({
             squares: squares
         }),
-        stepNumber: historyHandleClick.length,
-        index: index,
+
     }
 }
 
 export function actionRestart() {
     return {
-        type: HANDLECLICK,
+        type: RESTART,
         xIsNext: true,
         stepNumber: 0,
         history: [
@@ -30,18 +26,12 @@ export function actionRestart() {
     }
 }
 
-export function actionChange(xIsNext, index) {
+export function actionChange(index) {
     return {
         type: CHANGE,
-        xIsNext: !xIsNext,
         index: index,
     }
 }
 
-export function actionPrevious() {
-    return {
-        type: PREVIOUS,
 
-    }
-}
 

@@ -11,13 +11,7 @@ function GameFunc() {
 
     const memoizedCallback = useCallback(
         (i) => {
-            if (data.stepNumber > data.index) {
-
-                data.history.slice(data.index, data.stepNumber)
-                data.stepNumber = data.index
-
-            }
-            const historyHandleClick = data.history.slice(0, ++data.stepNumber)
+            data.history.slice(0, ++data.stepNumber)
             const current = data.history[data.index]
             const squares = current.squares.slice()
             const winner = calculateWinner(squares)
@@ -25,7 +19,7 @@ function GameFunc() {
                 return
             }
             squares[i] = data.xIsNext ? 'X' : '0'
-            dispatch(actionHandleClick(data.xIsNext, historyHandleClick, squares, data.stepNumber))
+            dispatch(actionHandleClick(squares))
         },
         [data.index],
     );
@@ -52,7 +46,7 @@ function GameFunc() {
     const memoizedPrevious = useCallback(
         () => {
             let step = --data.index;
-            dispatch(actionChange(data.xIsNext, step))
+            dispatch(actionChange(step))
         },
         [data.index],
     );
@@ -64,7 +58,7 @@ function GameFunc() {
     const memoizedNext = useCallback(
         () => {
             let step = ++data.index
-            dispatch(actionChange(data.xIsNext, step))
+            dispatch(actionChange(step))
         },
         [data.index],
     );
