@@ -2,18 +2,20 @@ import React, {useCallback} from 'react'
 import Board from './Board'
 import '../styles/index.css'
 import calculateWinner from '../functions/CalculateWinner'
-import {shallowEqual, useDispatch, useSelector} from "react-redux";
-import {actionHandleClick, actionRestart, actionChange, actionTest} from "../actions/actions";
+import {shallowEqual, useDispatch, useSelector} from "react-redux"
+import {actionHandleClick, actionRestart, actionChange} from "../actions/actions"
 
 function GameFunc() {
-    const dispatch = useDispatch();
-    const data = useSelector(state => state, shallowEqual);
+    const dispatch = useDispatch()
+    const data = useSelector(state => state, shallowEqual)
 
     const memoizedCallback = useCallback(
         (i) => {
             if (data.stepNumber > data.index) {
+
                 data.history.slice(data.index, data.stepNumber)
                 data.stepNumber = data.index
+
             }
             const historyHandleClick = data.history.slice(0, ++data.stepNumber)
             const current = data.history[data.index]
@@ -22,7 +24,7 @@ function GameFunc() {
             if (winner || squares[i]) {
                 return
             }
-            squares[i] = data.xIsNext ? 'X' : '0';
+            squares[i] = data.xIsNext ? 'X' : '0'
             dispatch(actionHandleClick(data.xIsNext, historyHandleClick, squares, data.stepNumber))
         },
         [data.index],
@@ -33,19 +35,39 @@ function GameFunc() {
     }
 
     function restart() {
-        dispatch(actionRestart())
+        memoizedRestart()
     }
+
+    const memoizedRestart = useCallback(
+        () => {
+            dispatch(actionRestart())
+        },
+        [data.index],
+    );
 
     function previousStep() {
-        let step = --data.index;
-        dispatch(actionChange(data.xIsNext, step))
+        memoizedPrevious()
     }
+
+    const memoizedPrevious = useCallback(
+        () => {
+            let step = --data.index;
+            dispatch(actionChange(data.xIsNext, step))
+        },
+        [data.index],
+    );
 
     function nextStep() {
-        let step = ++data.index;
-        dispatch(actionChange(data.xIsNext, step))
+        memoizedNext()
     }
 
+    const memoizedNext = useCallback(
+        () => {
+            let step = ++data.index
+            dispatch(actionChange(data.xIsNext, step))
+        },
+        [data.index],
+    );
     const current = data.history[data.index]
     const winner = calculateWinner(current.squares)
     const stylePrev = {
@@ -78,4 +100,5 @@ function GameFunc() {
         </div>
     )
 }
+
 export default GameFunc

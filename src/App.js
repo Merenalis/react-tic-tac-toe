@@ -10,7 +10,7 @@ const store = createStore(reducer)
 function App() {
     return (
         <div>
-            <ModalStart/>
+
             <Provider store={store}>
                 <div className={'wrapper'}>
                     <GameFunc/>
