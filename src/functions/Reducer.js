@@ -14,23 +14,26 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case HANDLECLICK: {
             let index = state.index
-            let step = state.stepNumber
-            let history = ++index !== step ? state.history.slice(0, ++state.index) : state.history
+            let history = ++index !== state.stepNumber ? state.history.slice(0, ++state.index) : state.history
             return {
                 ...state,
-                xIsNext: !state.xIsNext,
+                xIsNext: state.index % 2 === 0,
                 stepNumber: history.length,
                 history: history.concat(action.history),
                 index: history.length
             }
         }
 
-        case CHANGE:
-            return {
-                ...state,
-                xIsNext: !state.xIsNext,
-                index: action.index,
+        case CHANGE: {
+            if (!(state.history[state.index] === null)) {
+                return {
+                    ...state,
+                    xIsNext: state.index % 2 === 0,
+                    index: action.index,
+                }
             }
+            break
+        }
 
         case RESTART:
             return {
@@ -44,7 +47,6 @@ export default function reducer(state = initialState, action) {
                 ],
                 index: 0,
             }
-
 
         default:
             return state;

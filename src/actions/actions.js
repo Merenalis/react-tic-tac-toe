@@ -15,14 +15,7 @@ export function actionHandleClick(squares) {
 export function actionRestart() {
     return {
         type: RESTART,
-        xIsNext: true,
-        stepNumber: 0,
-        history: [
-            {
-                squares: Array(9).fill(null)
-            }
-        ],
-        index: 0,
+
     }
 }
 

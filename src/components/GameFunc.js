@@ -4,16 +4,16 @@ import '../styles/index.css'
 import calculateWinner from '../functions/CalculateWinner'
 import {shallowEqual, useDispatch, useSelector} from "react-redux"
 import {actionHandleClick, actionRestart, actionChange} from "../actions/actions"
+import selector from '../functions/Selector'
 
 function GameFunc() {
     const dispatch = useDispatch()
     const data = useSelector(state => state, shallowEqual)
+    const select = selector()
 
     const memoizedCallback = useCallback(
         (i) => {
-            data.history.slice(0, ++data.stepNumber)
-            const current = data.history[data.index]
-            const squares = current.squares.slice()
+            const squares = select.squares.slice()
             const winner = calculateWinner(squares)
             if (winner || squares[i]) {
                 return
@@ -28,20 +28,12 @@ function GameFunc() {
         memoizedCallback(i)
     }
 
-    function restart() {
-        memoizedRestart()
-    }
-
     const memoizedRestart = useCallback(
         () => {
             dispatch(actionRestart())
         },
         [data.index],
     );
-
-    function previousStep() {
-        memoizedPrevious()
-    }
 
     const memoizedPrevious = useCallback(
         () => {
@@ -51,10 +43,6 @@ function GameFunc() {
         [data.index],
     );
 
-    function nextStep() {
-        memoizedNext()
-    }
-
     const memoizedNext = useCallback(
         () => {
             let step = ++data.index
@@ -62,33 +50,25 @@ function GameFunc() {
         },
         [data.index],
     );
-    const current = data.history[data.index]
-    const winner = calculateWinner(current.squares)
-    const stylePrev = {
-        cursor: data.index === 0 ? 'default' : 'pointer',
-        backgroundColor: data.index === 0 ? 'gray' : 'white'
-    }
-    const styleNext = {
-        cursor: data.index === data.stepNumber ? 'default' : 'pointer',
-        backgroundColor: data.index === data.stepNumber ? 'gray' : 'white'
-    }
+    const winner = calculateWinner(select.squares)
+
     return (
         <div>
             <h1>Tic-tac-toe</h1>
-            <div className="game">
-                <div className="game-result">
+            <div className='game'>
+                <div className='game-result'>
                     <div>Result: {winner ? 'Winner is ' + winner : data.index === 9 ? 'Nobody win' : ''}</div>
-                    <button onClick={() => restart()}>Play again</button>
+                    <button onClick={() => memoizedRestart()}>Play again</button>
                     <br/>
-                    <button disabled={data.index === 0} style={stylePrev} className={'btn-previous'}
-                            onClick={() => previousStep()}>Previous
+                    <button disabled={data.index === 0} className='btn-previous'
+                            onClick={() => memoizedPrevious()}>Previous
                     </button>
-                    <button disabled={data.index === data.stepNumber} style={styleNext} className={'btn-next'}
-                            onClick={() => nextStep()}>Next
+                    <button disabled={data.index === data.stepNumber} className='btn-next'
+                            onClick={() => memoizedNext()}>Next
                     </button>
                 </div>
-                <div className="game-board">
-                    <Board onClick={(i) => handleClick(i)} squares={current.squares}/>
+                <div className='game-board'>
+                    <Board onClick={(i) => handleClick(i)} squares={select.squares}/>
                 </div>
             </div>
         </div>

@@ -12,7 +12,7 @@ function App() {
         <div>
             <ModalStart/>
             <Provider store={store}>
-                <div className={'wrapper'}>
+                <div className='wrapper'>
                     <GameFunc/>
                 </div>
             </Provider>
