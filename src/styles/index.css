@@ -57,21 +57,13 @@ h1 {
     border-radius: 5px;
     color: #A68400;
 }
-.btn-previous{
-    disabled:true;
+
+.btn-style{
     cursor: pointer;
     background-color: white;
 }
-.btn-previous:disabled{
-    cursor: default;
-    background-color: gray;
-}
-.btn-next{
-    disabled:true;
-    cursor: pointer;
-    background-color: white;
-}
-.btn-next:disabled{
+
+.btn-style:disabled{
     cursor: default;
     background-color: gray;
 }

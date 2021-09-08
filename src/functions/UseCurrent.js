@@ -1,7 +1,7 @@
 import React from 'react'
 import {shallowEqual,useSelector} from "react-redux"
 
- function selector(){
+ function useCurrent(){
      const data = useSelector(state => state, shallowEqual)
      const history = data.history
      const index = data.index
@@ -9,4 +9,4 @@ import {shallowEqual,useSelector} from "react-redux"
      return history[index]
 }
 
-export default selector
+export default useCurrent

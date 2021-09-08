@@ -1,6 +1,4 @@
-export const HANDLECLICK = 'HANDLECLICK'
-export const RESTART = 'RESTART'
-export const CHANGE = 'CHANGE'
+import {HANDLECLICK, CHANGE, RESTART} from "../actionTypes/actionTypes";
 
 export function actionHandleClick(squares) {
     return {
