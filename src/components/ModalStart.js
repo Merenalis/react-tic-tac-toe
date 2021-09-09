@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component} from 'react';
 import '../styles/modalStart.css';
 
 export default class ModalStart extends Component {

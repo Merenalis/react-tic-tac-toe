@@ -1,9 +1,9 @@
 import React from 'react'
 import './styles/index.css'
-import {Provider} from "react-redux"
-import GameFunc from "./components/GameFunc"
+import {Provider} from 'react-redux'
+import GameFunc from './components/GameFunc'
 import store from './store/store';
-import ModalStart from "./components/ModalStart";
+import ModalStart from './components/ModalStart';
 
 function App() {
     return (
@@ -17,4 +17,5 @@ function App() {
         </div>
     )
 }
+
 export default App

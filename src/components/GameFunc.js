@@ -2,8 +2,8 @@ import React, {useCallback, useMemo} from 'react'
 import Board from './Board'
 import '../styles/index.css'
 import calculateWinner from '../functions/CalculateWinner'
-import {shallowEqual, useDispatch, useSelector} from "react-redux"
-import {actionHandleClick, actionRestart, actionChange} from "../store/actions/actions"
+import {shallowEqual, useDispatch, useSelector} from 'react-redux'
+import {actionHandleClick, actionRestart, actionChange} from '../store/actions/actions'
 import useCurrent from '../functions/UseCurrent'
 
 function GameFunc() {

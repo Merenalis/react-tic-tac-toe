@@ -1,33 +1,35 @@
 import React, {Component} from 'react';
-import Square from "./Square";
+import Square from './Square';
 import '../styles/index.css';
 
 class Board extends Component {
     renderSquare(i) {
-        return(
+        return (
             <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)}/>
-            );
+        );
     }
+
+
     render() {
+        let count = 0
+        let countArr = Array(3).fill(null)
+
+        const listItems = countArr.map((number) =>
+            <div key={number} className='board-row'>
+                {
+                    countArr.map(() =>
+                        this.renderSquare(count++)
+                    )
+                }
+            </div>
+        );
         return (
             <div className='wrapper'>
-                <div className='board-row'>
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
-                </div>
-                <div className='board-row'>
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
-                </div>
-                <div className='board-row'>
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
-                </div>
+                {listItems}
             </div>
         );
     }
 }
+
+
 export default Board;

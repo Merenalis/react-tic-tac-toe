@@ -1,4 +1,4 @@
-import {HANDLECLICK, CHANGE, RESTART} from "../actionTypes/actionTypes";
+import {HANDLECLICK, CHANGE, RESTART} from '../actionTypes/actionTypes';
 
 export function actionHandleClick(squares) {
     return {
