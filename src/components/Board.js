@@ -14,13 +14,13 @@ class Board extends Component {
         let count = 0
         let countArr = Array(3).fill(null)
 
-        const listItems = countArr.map((number) =>
-            <div key={number} className='board-row'>
-                {
-                    countArr.map(() =>
-                        this.renderSquare(count++)
-                    )
-                }
+        const listItems = countArr.map(() =>
+            <div key={count} className='board-row'>
+                {countArr.map(() =>
+                    <div key={count}>
+                        {this.renderSquare(count++)}
+                    </div>
+                )}
             </div>
         );
         return (

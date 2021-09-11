@@ -7,14 +7,12 @@ import ModalStart from './components/ModalStart';
 
 function App() {
     return (
-        <div>
+        <Provider store={store}>
             <ModalStart/>
-            <Provider store={store}>
-                <div className='wrapper'>
-                    <GameFunc/>
-                </div>
-            </Provider>
-        </div>
+            <div className='wrapper'>
+                <GameFunc/>
+            </div>
+        </Provider>
     )
 }
 
